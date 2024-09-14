@@ -1,0 +1,34 @@
+[
+    {
+        "hotelId" : 1,
+        "hotelName" : "terou bi",
+        "description" : "great room service luxury room and big confort",
+        "price" : 199.99,
+        "imageUrl" : "assets/img/hotel-room.jpg",
+        "rating" : 2.5 
+    },
+    {
+        "hotelId" : 2,
+        "hotelName" : "radisson blue",
+        "description" : "luxury room and beautiful space",
+        "price" : 209.99,
+        "imageUrl" : "assets/img/indoors.jpg",
+        "rating" : 4
+    },
+    {
+        "hotelId" : 3,
+        "hotelName" : "pullman hotel",
+        "description" : "luxury room and great service",
+        "price" : 1999.999,
+        "imageUrl" : "assets/img/the-interior.jpg" ,
+        "rating" : 1.5
+    },
+    {
+        "hotelId" : 4,
+        "hotelName" : "royal baobab",
+        "description" : "royal room with a beautiful vue",
+        "price" : 599.99,
+        "imageUrl" : "assets/img/window.jpg",
+        "rating" : 5
+    }
+]

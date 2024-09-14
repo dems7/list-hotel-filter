@@ -1,0 +1,69 @@
+<div class="container">
+    <h2 *ngIf="hotels && hotels.length>0">{{title}}</h2>
+
+    <button class="btn btn-primary mb-2 d-flex" (click)="toggleIsNewBadge()">
+      <span class="material-icons">
+        {{showBadge ? 'visibility_off ':'visibility '}} 
+      </span>
+      <span class="ml-2">
+        {{showBadge ? 'Masquer':'Afficher'}} nouveau
+      </span>
+    </button>
+    <hr>
+    <!-- my-2 pouvoir creer des espaces sur l'axe vertical-->
+    <div class="my-2">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="filter">filtre actuel: </span>
+          <b>{{hotelFilter}}</b>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="hotelFilter">
+          <!--<input type="text" class="form-control" [ngModel]="hotelFilter" (ngModelChange)="hotelFilter = $event">-->
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-primary d-flex" *ngIf="!!receivedRating">
+      <span class="material-icons mr-2">info</span>
+      <span class="ml-2">{{receivedRating}}</span>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 mt-2">
+        <div class="col mb-4" *ngFor="let hotel of filteredHotels">
+           <div class="card">
+             <img 
+             [src]="hotel.imageUrl" 
+             [title]="hotel.hotelName" 
+             class="card-img-top" 
+             [alt]="hotel.hotelName |uppercase"
+             >
+             <div class="card-body">
+                <h3 class="card-title">{{hotel.hotelName}}</h3>
+                <p class="card-text">
+                  {{hotel.description}}
+                </p>
+                <p class="card-text">
+                  {{hotel.price | currency : 'EUR' : 'symbol' : '1.2-2' : 'fr' | replaceComma}}
+                </p>
+                <div class="d-flex justify-content-between">
+
+                  <app-star-rating 
+                    [rating]="hotel.rating" 
+                    (starRatingClicked)="receivedRatingClicked($event)">
+                  </app-star-rating>
+
+                  <span class="material-icons 
+                    bg-primary text-white 
+                    rounded-circle p-2"
+                    [routerLink]="['/hotels', hotel.hotelId]">
+                       keyboard_arrow_right
+                  </span>
+                  
+                </div>
+
+                <span class="badge badge-pill bg-info" *ngIf="showBadge">Nouveau</span>
+             </div>
+            </div>
+        </div>
+    </div>
+
+</div>

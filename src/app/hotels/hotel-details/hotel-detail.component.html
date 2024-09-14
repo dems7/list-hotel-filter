@@ -1,0 +1,69 @@
+
+<div class="container col-md-8">
+    <div class="card" *ngIf="!!hotel">
+        <div class="card-header text-white bg-info">
+            {{hotel.hotelName | uppercase}}
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8 ">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-text">Nom:</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-text">{{hotel.hotelName}}</div>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-text">Description:</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-text">{{hotel.description}}</div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-text">Price:</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-text">{{hotel.price | currency : 'EUR' : 'symbol' : '1.2-2' : 'fr' | replaceComma}}</div>
+                        </div>
+                    </div>
+                        <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-text">Rating:</div>
+                        </div>
+                        <div class="col-md-8">
+                            <app-star-rating [rating]="hotel.rating" >
+                            </app-star-rating>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <div class="col-md-4">
+                    <img [src]="hotel.imageUrl" 
+                    [title]="hotel.hotelName |uppercase" 
+                    class="card-img-top" 
+                    [alt]="hotel.hotelName |uppercase">
+                </div>
+
+            </div>            
+        </div>
+        <div class="card-footer">
+            <!--Au lieu de la méthode backToList() nous aurions pu utiliser [routerLink]="['/hotels']"-->
+            <button class="btn btn-outline-info d-flex"
+            (click)="backToList()">
+                <span class="material-icons">
+                    keyboard_arrow_left
+                </span>
+                Back to the list
+            </button>
+        </div>
+    </div>
+</div>
